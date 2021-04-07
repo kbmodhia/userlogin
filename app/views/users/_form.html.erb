@@ -1,0 +1,67 @@
+<%= form_with(model: user, local: true) do |f| %>
+  <% if user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+        <% user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <div class="field" >
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email",readonly:true %>
+  </div>
+
+    <div class="field">
+      <%= f.label :firstname %><br />
+      <%= f.text_field :firstname, autofocus: true, readonly: true %>
+    </div>
+    <div class="field">
+      <%= f.label :lastname %><br />
+      <%= f.text_field :lastname, autofocus: true, readonly:true %>
+    </div>
+    <div class="field">
+      <%= f.label "contact No" %><br />
+      <%= f.text_field :contactno, autofocus: true %>
+    </div>
+
+    <% if @user.id != 1%>
+    <div class="field">
+      <%= f.label "Address line1" %><br />
+      <%= f.text_field :address1, autofocus: true%>
+    </div>
+
+    <div class="field">
+      <%= f.label "Address line2" %><br />
+      <%= f.text_field :address2, autofocus: true %>
+    </div>
+
+    <div class="field">
+      <%= f.label "City" %><br />
+      <%= f.text_field :city, autofocus: true %>
+    </div>
+    <div class="field">
+      <%= f.label "State" %><br />
+      <%= f.text_field :state, autofocus: true %>
+    </div>
+
+    <div class="field">
+      <%= f.label "Pin Code" %><br />
+      <%= f.number_field :pincode, autofocus: true %>
+    </div>
+
+    <div class="field" >
+      <%= f.label "Profile PIcture" %><br />
+      <%= f.file_field :profilepic, autofocus: true%>
+    </div>
+    <%end%>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
